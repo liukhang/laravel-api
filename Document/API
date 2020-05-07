@@ -1,0 +1,121 @@
+
+domain: http://127.0.0.1:8000/
+
+List post (include pagination)
+    * URI /api/v1/posts
+    * Method: GET
+    * Request: {domain}/api/v1/posts?limit=5&page=2&column=id&sort=desc
+    * Response:
+    Success:
+        {
+            "status": true,
+            "code": 200,
+            "post": [
+                {
+                    "id": 3,
+                    "name": "Title 2",
+                    "created_at": "2020-05-07T07:08:38.000000Z",
+                    "updated_at": "2020-05-07T07:08:38.000000Z"
+                },
+                ...........
+            ],
+            "meta": {
+                "total": 51,
+                "perPage": "2",
+                "currentPage": 2
+            }
+        }
+    Fail:
+        {
+            "status": false,
+            "code": 500,
+            "message": "Undefined variable: postPaginate"
+        }
+
+Create post 
+    * URI /api/v1/posts
+    * Method: Post
+    * Request:
+        {
+            'name': 'Name post'
+        }
+    * Response:
+    Success:
+        {
+            "status": true,
+            "code": 200,
+            "post": {
+                "name": "Name post",
+                "updated_at": "2020-05-07T10:09:27.000000Z",
+                "created_at": "2020-05-07T10:09:27.000000Z",
+                "id": 54
+            }
+        }
+    Fail:
+        {
+            "status": false,
+            "code": 500,
+            "message": "Not fail"
+        }
+
+Update post 
+    * URI /api/v1/posts/{id}
+    * Method: PUT
+    * Request:
+        {
+            'name': 'Update name post'
+        }
+    * Response:
+    Success:
+        {
+            "status": true,
+            "code": 200,
+            "post": {
+                "name": "Update name post",
+                "updated_at": "2020-05-07T10:09:27.000000Z",
+                "created_at": "2020-05-07T10:09:27.000000Z",
+                "id": 54
+            }
+        }
+    Fail:
+        {
+            "status": false,
+            "code": 500,
+            "message": "Not fail"
+        }
+Show
+    * URI /api/v1/posts/{id}
+    * Method: GET
+    * Response:
+    Success:
+        {
+            "status": true,
+            "code": 200,
+            "post": {
+                "name": "Name post",
+                "updated_at": "2020-05-07T10:09:27.000000Z",
+                "created_at": "2020-05-07T10:09:27.000000Z",
+                "id": 54
+            }
+        }
+    Fail:
+        {
+            "status": false,
+            "code": 500,
+            "message": "Not fail"
+        }
+Delete
+    * URI /api/v1/posts/{id}
+    * Method: Delete
+    * Response:
+    Success:
+        {
+            "status": true,
+            "code": 200,
+        }
+    Fail:
+        {
+            "status": false,
+            "code": 500,
+            "message": "Not fail"
+        }
